@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solve Sudoku</title>
+    <title>Solve Sudoku - Sudoku League</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">  <!-- Link to your CSS file if you have one -->
 </head>
 <body>
     <header>
-        <h1>Solve Sudoku</h1>
+        <div class="logo">
+            <h1><a href="{% url 'solve_sudoku' %}">Sudoku League</a></h1>
+        </div>
         <nav>
             <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li>
+                    <label class="toggle">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </li>
             </ul>
         </nav>
     </header>
@@ -60,7 +67,7 @@
     </main>
 
     <footer>
-        <p>&copy; {{ current_year }} Sudoku Forum. All rights reserved.</p>
+        <p>&copy; {{ current_year }} Sudoku League. All rights reserved.</p>
     </footer>
 
     <script src="{% static 'js/scripts.js' %}"></script>  <!-- Link to your JS file if you have one -->

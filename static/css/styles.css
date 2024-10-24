@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* Light text */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e; /* Header background */
+    padding: 10px 20px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 20px; /* Space between navigation items */
+}
+
+nav a {
+    color: #ffeb3b; /* Bold yellow color */
+    text-decoration: none;
+    font-weight: bold; /* Bold text */
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px; /* Adjust the width as needed */
+    height: 24px; /* Adjust the height as needed */
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Background color for the toggle */
+    transition: .4s;
+    border-radius: 24px; /* Rounded edges */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px; /* Height of the toggle ball */
+    width: 20px; /* Width of the toggle ball */
+    left: 2px; /* Position of the toggle ball */
+    bottom: 2px; /* Position of the toggle ball */
+    background-color: white; /* Color of the toggle ball */
+    border-radius: 50%; /* Round toggle ball */
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #ffeb3b; /* Change background color when checked */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px); /* Move toggle ball to the right */
+}
+
+table {
+    border-collapse: collapse; /* Collapse borders for better appearance */
+    margin: 20px auto; /* Center the table on the page */
+}
+
+td {
+    width: 40px; /* Set the width of the cells */
+    height: 40px; /* Set the height of the cells */
+    border: 1px solid #ccc; /* Add a border around the cells */
+    text-align: center; /* Center the text in the cells */
+    font-size: 1.5em; /* Adjust font size for better visibility */
+}
+
+input[type="text"] {
+    width: 100%; /* Full width of the cell */
+    height: 100%; /* Full height of the cell */
+    border: none; /* Remove default border */
+    text-align: center; /* Center the input text */
+    font-size: 1.5em; /* Font size for input */
+    background-color: transparent; /* Transparent background for input */
+}
+
+input[type="text"]:focus {
+    outline: none; /* Remove outline on focus */
+    background-color: #f0f0f0; /* Change background on focus */
+}
+
+input[type="text"]:invalid {
+    background-color: #ffdddd; /* Light red background for invalid input */
+}
