@@ -27,7 +27,7 @@
 
     <main>
         <section>
-            <h2>Enter Your Sudoku Puzzle</h2>
+            <h2>Daily Sudoku Puzzle</h2>
             <form method="POST" action="{% url 'solve_sudoku' %}">
                 {% csrf_token %}
                 <table>
@@ -45,7 +45,7 @@
                     </tr>
                     {% endfor %}
                 </table>
-                <button type="submit" class="submit-button">Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </section>
 

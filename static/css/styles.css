@@ -215,7 +215,7 @@ main {
 }
 
 header, footer {
-    background-color: #333; /* Dark grey background */
+    background-color: black; /* Dark grey background */
     color: white; /* White text */
     text-align: center; /* Center text */
     padding: 10px 0; /* Padding on top and bottom */
@@ -255,7 +255,7 @@ body.light-mode td {
     border: 1px solid black; /* Black border in light mode */
 }
 
-.submit-button {
+button {
     padding: 10px 25px; /* Increase button size */
     font-size: 14px; /* Adjust font size */
     background-color: orange; /* Change background color */
@@ -267,6 +267,6 @@ body.light-mode td {
     margin: 20px auto; /* Center horizontally and add space */
 }
 
-.submit-button:hover {
+button:hover {
     background-color: #f3c36a; /* Change color on hover */
 }
