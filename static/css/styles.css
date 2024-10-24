@@ -1,51 +1,41 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212; /* Dark background */
-    color: #ffffff; /* Light text */
-    margin: 0;
-    padding: 0;
+    margin: 10;
+    padding: 10;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1e1e1e; /* Header background */
-    padding: 10px 20px;
-}
-
-.logo h1 {
-    margin: 0;
-    font-size: 1.5em;
+    padding: 0px 0px; /* Add padding for spacing */
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Flex for horizontal alignment */
+    align-items: center; /* Center the items vertically */
+}
+
+.toggle-container {
     display: flex;
-    align-items: center;
+    align-items: center; /* Center the toggle vertically */
 }
 
-nav ul li {
-    margin-left: 20px; /* Space between navigation items */
+.toggle-container {
+    position: absolute; /* Adjust positioning as needed */
+    top: 10px; /* Adjust to your layout */
+    right: 10px; /* Adjust to your layout */
 }
 
-nav a {
-    color: #ffeb3b; /* Bold yellow color */
-    text-decoration: none;
-    font-weight: bold; /* Bold text */
-}
-
-.toggle {
+.switch {
     position: relative;
     display: inline-block;
-    width: 50px; /* Adjust the width as needed */
-    height: 24px; /* Adjust the height as needed */
+    width: 60px; /* Adjust width */
+    height: 34px; /* Adjust height */
 }
 
-.toggle input {
-    opacity: 0;
+.switch input {
+    opacity: 0; /* Hide default checkbox */
     width: 0;
     height: 0;
 }
@@ -57,58 +47,226 @@ nav a {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc; /* Background color for the toggle */
+    background-color: yellow; /* Toggle background */
     transition: .4s;
-    border-radius: 24px; /* Rounded edges */
+    border-radius: 34px; /* Rounded edges */
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 20px; /* Height of the toggle ball */
-    width: 20px; /* Width of the toggle ball */
-    left: 2px; /* Position of the toggle ball */
-    bottom: 2px; /* Position of the toggle ball */
-    background-color: white; /* Color of the toggle ball */
-    border-radius: 50%; /* Round toggle ball */
+    height: 26px; /* Height of the toggle circle */
+    width: 26px; /* Width of the toggle circle */
+    left: 4px; /* Space from the left */
+    bottom: 4px; /* Space from the bottom */
+    background-color: orange; /* Toggle circle color */
     transition: .4s;
+    border-radius: 50%; /* Circle shape */
 }
 
-input:checked + .slider {
-    background-color: #ffeb3b; /* Change background color when checked */
-}
-
+/* When checked, move the toggle circle */
 input:checked + .slider:before {
-    transform: translateX(26px); /* Move toggle ball to the right */
+    transform: translateX(26px); /* Moves the circle to the right */
 }
 
+
+/* Light mode styles */
+body.light-mode {
+    background-color: lightgray; /* Light background */
+    color: black; /* Black text */
+}
+
+body.light-mode header {
+    background-color: black; /* Light header */
+}
+
+body.light-mode .toggle:before {
+    transform: translateX(25px); /* Move the circle to the right */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+}
+
+body.dark-mode .toggle:before {
+    transform: translateX(0); /* Keep the circle on the left in dark mode */
+}
+
+footer {
+    text-align: center; /* Center the footer text */
+    position: relative;
+    bottom: 0; /* Position at the bottom */
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for footer */
+}
+/* Common styles for the table */
 table {
-    border-collapse: collapse; /* Collapse borders for better appearance */
-    margin: 20px auto; /* Center the table on the page */
+    border-collapse: collapse; /* Ensures borders are shared between cells */
+    margin: 20px auto; /* Centers the table */
 }
 
 td {
-    width: 40px; /* Set the width of the cells */
-    height: 40px; /* Set the height of the cells */
-    border: 1px solid #ccc; /* Add a border around the cells */
-    text-align: center; /* Center the text in the cells */
-    font-size: 1.5em; /* Adjust font size for better visibility */
+    width: 40px;  /* Adjust to your desired cell size */
+    height: 40px; /* Should match width for square cells */
+    text-align: center; /* Center numbers in cells */
+    vertical-align: middle; /* Center numbers vertically */
+    font-size: 24px; /* Increase font size for better visibility */
+}
+
+/* Light mode borders */
+.light-mode td {
+    border: 2px solid black; /* Bold black borders in light mode */
+}
+
+/* Dark mode borders */
+.dark-mode td {
+    border: 2px solid white; /* White borders in dark mode */
 }
 
 input[type="text"] {
-    width: 100%; /* Full width of the cell */
-    height: 100%; /* Full height of the cell */
+    width: 100%;  /* Make input take full width of cell */
+    height: 100%; /* Make input take full height of cell */
     border: none; /* Remove default border */
-    text-align: center; /* Center the input text */
-    font-size: 1.5em; /* Font size for input */
-    background-color: transparent; /* Transparent background for input */
+    text-align: center; /* Center text in input */
+    font-size: 24px; /* Match font size */
+    background-color: transparent; /* Make background transparent */
 }
 
-input[type="text"]:focus {
-    outline: none; /* Remove outline on focus */
-    background-color: #f0f0f0; /* Change background on focus */
+/* Reset margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and borders are included in the element's total width and height */
 }
 
-input[type="text"]:invalid {
-    background-color: #ffdddd; /* Light red background for invalid input */
+/* Styles for the header to appear as a line */
+header {
+    background-color: black; /* Dark grey background */
+    color: white; /* White text color */
+    height: 60px; /* Set a smaller fixed height for the header */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space out items between left and right */
+    padding: 0 10px; /* Add horizontal padding for spacing */
+}
+
+/* Styles for the "Sudoku League" text */
+header h1 {
+    font-size: 32px; /* Adjust font size for the logo */
+    line-height: 60px; /* Match line height to header height for vertical alignment */
+}
+
+/* Styles for the navigation */
+header nav ul {
+    list-style-type: none; /* Remove bullet points */
+    display: flex; /* Display items in a row */
+    height: 100%; /* Full height of the header */
+}
+
+header nav ul li {
+    margin: 0; /* Ensure no margin on menu items */
+    height: 100%; /* Full height of the header */
+}
+
+header nav ul li a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    line-height: 30px; /* Center text vertically within the header */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+    font-size: 14px; /* Adjust font size for a smaller header */
+}
+
+header nav ul li a:hover {
+    color: #FFD700; /* Change color on hover (gold or another bright color) */
+}
+
+/* Toggle button container */
+.toggle-container {
+    margin: 0; /* Ensure no margin on toggle container */
+}
+
+/* Styles for the toggle */
+.toggle-container {
+    display: flex;
+    align-items: center; /* Center toggle vertically */
+    height: 100%; /* Ensure it takes full height of the header */
+}
+
+/* Reset default browser styles */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Full height */
+    margin: 0; /* No default margin */
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stack header, main, footer */
+    min-height: 100vh; /* Full viewport height */
+}
+
+main {
+    flex: 1; /* Allow the main section to grow and fill available space */
+}
+
+header, footer {
+    background-color: #333; /* Dark grey background */
+    color: white; /* White text */
+    text-align: center; /* Center text */
+    padding: 10px 0; /* Padding on top and bottom */
+}
+
+footer {
+    margin-top: auto; /* Push footer to the bottom */
+    position: fixed;
+}
+
+h1 {
+    font-size: 24px; /* Adjust size as needed */
+}
+
+.toggle-container {
+    display: inline-block; /* Adjust display */
+    margin-left: 10px; /* Add margin */
+}
+
+/* Styles for Sudoku cells */
+table {
+    border-collapse: collapse; /* Ensure borders don't double */
+}
+
+td {
+    width: 40px; /* Set width */
+    height: 40px; /* Set height for squares */
+    border: 1px solid transparent; /* Default border */
+}
+
+/* Dark mode styles */
+body.dark-mode td {
+    border: 1px solid white; /* White border in dark mode */
+}
+
+body.light-mode td {
+    border: 1px solid black; /* Black border in light mode */
+}
+
+.submit-button {
+    padding: 10px 25px; /* Increase button size */
+    font-size: 14px; /* Adjust font size */
+    background-color: orange; /* Change background color */
+    color: black; /* Text color */
+    border: orange; /* Remove default border */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    display: block; /* Centering */
+    margin: 20px auto; /* Center horizontally and add space */
+}
+
+.submit-button:hover {
+    background-color: #f3c36a; /* Change color on hover */
 }
