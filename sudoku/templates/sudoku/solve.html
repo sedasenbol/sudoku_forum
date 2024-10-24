@@ -3,15 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solve Sudoku - Sudoku League</title>
+    <title>Solve Sudoku</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">  <!-- Link to your CSS file if you have one -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">  <!-- Link to your CSS file -->
+    <style>
+        /* General styles */
+        body {
+            transition: background-color 0.5s, color 0.5s; /* Smooth transitions */
+            background-color: #f0f0f0; /* Light background for light mode */
+            color: #000; /* Dark text color for light mode */
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #121212;  /* Dark background */
+            color: #ffffff;  /* Light text color */
+        }
+
+        header, footer {
+            background-color: #1e1e1e; /* Darker header/footer */
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc; /* Light border for cells */
+            text-align: center; /* Center text */
+        }
+
+        input {
+            width: 100%;
+            height: 100%;
+            border: none; /* Remove border */
+            text-align: center; /* Center text */
+            font-size: 20px; /* Increase font size */
+        }
+
+        /* Toggle switch styles */
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 10px; /* Add some space between links and toggle */
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3; /* Color when checked */
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px); /* Move the slider */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1><a href="{% url 'solve_sudoku' %}">Sudoku League</a></h1>
-        </div>
+        <h1><a href="{% url 'home' %}" style="color: inherit; text-decoration: none;">Sudoku League</a></h1>  <!-- Website name as home link -->
         <nav>
             <ul>
                 <li><a href="{% url 'login' %}">Login</a></li>
@@ -70,6 +152,27 @@
         <p>&copy; {{ current_year }} Sudoku League. All rights reserved.</p>
     </footer>
 
-    <script src="{% static 'js/scripts.js' %}"></script>  <!-- Link to your JS file if you have one -->
+    <script>
+        // Get the toggle checkbox and body element
+        const toggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Check local storage for dark mode preference on page load
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode'); // Add dark mode class if it's enabled
+            toggle.checked = true; // Set the toggle to checked if dark mode is enabled
+        }
+
+        // Add an event listener to the toggle
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                body.classList.add('dark-mode'); // Add dark mode class
+                localStorage.setItem('darkMode', 'enabled'); // Store preference in local storage
+            } else {
+                body.classList.remove('dark-mode'); // Remove dark mode class
+                localStorage.setItem('darkMode', 'disabled'); // Store preference in local storage
+            }
+        });
+    </script>
 </body>
 </html>
