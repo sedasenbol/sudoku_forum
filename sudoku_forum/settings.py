@@ -68,6 +68,12 @@ TEMPLATES = [
     },
 ]
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Adjust if your static files are in a different directory
+]
+
 WSGI_APPLICATION = "sudoku_forum.wsgi.application"
 
 

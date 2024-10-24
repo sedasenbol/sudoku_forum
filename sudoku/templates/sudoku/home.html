@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Sudoku Forum</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">  <!-- Link to a CSS file if you have one -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Sudoku Forum</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'solve_sudoku' %}">Solve Sudoku</a></li>  <!-- Adjust if needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>About Us</h2>
+            <p>Join our community of Sudoku enthusiasts! Whether you're a beginner or a seasoned pro, we have something for everyone.</p>
+            <p>Participate in discussions, solve puzzles, and improve your skills with our resources.</p>
+        </section>
+
+        <section>
+            <h2>Latest Puzzles</h2>
+            <p>Check out our latest Sudoku puzzles and try to solve them!</p>
+            <!-- You can add links or buttons to navigate to specific puzzles -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} Sudoku Forum. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>  <!-- Link to a JS file if you have one -->
+</body>
+</html>

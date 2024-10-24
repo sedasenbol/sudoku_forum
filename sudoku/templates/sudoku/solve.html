@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solve Sudoku</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">  <!-- Link to your CSS file if you have one -->
+</head>
+<body>
+    <header>
+        <h1>Solve Sudoku</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Enter Your Sudoku Puzzle</h2>
+            <form method="POST" action="{% url 'solve_sudoku' %}">
+                {% csrf_token %}
+                <table>
+                    {% for row in puzzle %}
+                    <tr>
+                        {% for number in row %}
+                        <td>
+                            {% if number == 0 %}
+                                <input type="text" name="sudoku_{{ forloop.counter0 }}_{{ forloop.counter }}" maxlength="1" pattern="\d?" title="Enter a number between 1-9">
+                            {% else %}
+                                {{ number }}
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+                <button type="submit">Solve</button>
+            </form>
+        </section>
+
+        {% if solution %}
+        <section>
+            <h2>Solved Sudoku Puzzle</h2>
+            <table>
+                {% for row in solution %}
+                <tr>
+                    {% for number in row %}
+                    <td>{{ number }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} Sudoku Forum. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>  <!-- Link to your JS file if you have one -->
+</body>
+</html>
